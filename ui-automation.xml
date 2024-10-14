@@ -1,0 +1,303 @@
+<maven2-moduleset plugin="maven-plugin@3.18">
+	<actions/>
+	<description/>
+	<keepDependencies>false</keepDependencies>
+	<properties>
+		<hudson.security.AuthorizationMatrixProperty>
+			<inheritanceStrategy class="org.jenkinsci.plugins.matrixauth.inheritance.NonInheritingStrategy"/>
+			<permission>USER:com.cloudbees.plugins.credentials.CredentialsProvider.Create:hari</permission>
+			<permission>USER:com.cloudbees.plugins.credentials.CredentialsProvider.Delete:hari</permission>
+			<permission>USER:com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:hari</permission>
+			<permission>USER:com.cloudbees.plugins.credentials.CredentialsProvider.Update:hari</permission>
+			<permission>USER:com.cloudbees.plugins.credentials.CredentialsProvider.View:hari</permission>
+			<permission>USER:hudson.model.Item.Build:hari</permission>
+			<permission>USER:hudson.model.Item.Cancel:hari</permission>
+			<permission>USER:hudson.model.Item.Configure:hari</permission>
+			<permission>USER:hudson.model.Item.Delete:hari</permission>
+			<permission>USER:hudson.model.Item.Discover:hari</permission>
+			<permission>USER:hudson.model.Item.Move:hari</permission>
+			<permission>USER:hudson.model.Item.Read:hari</permission>
+			<permission>USER:hudson.model.Item.Workspace:hari</permission>
+			<permission>USER:hudson.model.Run.Delete:hari</permission>
+			<permission>USER:hudson.model.Run.Replay:hari</permission>
+			<permission>USER:hudson.model.Run.Update:hari</permission>
+			<permission>USER:hudson.scm.SCM.Tag:hari</permission>
+		</hudson.security.AuthorizationMatrixProperty>
+		<com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.34">
+			<autoRebuild>false</autoRebuild>
+			<rebuildDisabled>true</rebuildDisabled>
+		</com.sonyericsson.rebuild.RebuildSettings>
+		<hudson.model.ParametersDefinitionProperty>
+			<parameterDefinitions>
+				<org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.6.1">
+					<name>jenkins_operating_system</name>
+					<randomName>choice-parameter-140865153254101</randomName>
+					<visibleItemCount>1</visibleItemCount>
+					<script class="org.biouno.unochoice.model.GroovyScript">
+						<secureScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script>return[ 'Windows 10', 'Windows 8.1', 'Windows 8', 'Windows 7', 'MacOS Big sur', 'MacOS Catalina', 'macOS Mojave', 'macOS High Sierra', 'macOS Sierra', 'OS X El Capitan', 'OS X Yosemite', 'OS X Mavericks' ]</script>
+							<sandbox>false</sandbox>
+						</secureScript>
+						<secureFallbackScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script/>
+							<sandbox>false</sandbox>
+						</secureFallbackScript>
+					</script>
+					<projectName>UI Automation</projectName>
+					<projectFullName>UI Automation</projectFullName>
+					<choiceType>PT_SINGLE_SELECT</choiceType>
+					<filterable>false</filterable>
+					<filterLength>1</filterLength>
+				</org.biouno.unochoice.ChoiceParameter>
+				<org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.6.1">
+					<name>jenkins_browser_name</name>
+					<randomName>choice-parameter-140866191097901</randomName>
+					<visibleItemCount>1</visibleItemCount>
+					<script class="org.biouno.unochoice.model.GroovyScript">
+						<secureScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script>List windows10 = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Internet Explorer'] List windows81 = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Internet Explorer'] List windows8 = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Internet Explorer'] List windows7 = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Internet Explorer'] List macOSBigsur = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Safari'] List macOSCatalina = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Opera', 'Safari'] List macOSMojave = ['Chrome', 'MicrosoftEdge', 'Firefox', 'Safari'] List macOSHighSierra= ['Chrome', 'MicrosoftEdge', 'Firefox', 'Safari'] List macOSSierra= ['Chrome', 'MicrosoftEdge', 'Firefox', 'Safari'] List OSXElCapitan= ['Chrome', 'MicrosoftEdge', 'Firefox'] List OSXYosemite= ['Chrome', 'MicrosoftEdge', 'Firefox'] List OSXMavericks= ['Chrome', 'Firefox'] if(jenkins_operating_system.equals("Windows 10")){ return windows10 }else if (jenkins_operating_system.equals("Windows 8")){ return windows8 }else if (jenkins_operating_system.equals("Windows 8.1")){ return windows81 }else if (jenkins_operating_system.equals("Windows 7")){ return windows7 }else if (jenkins_operating_system.equals("MacOS Big sur")){ return macOSBigsur }else if (jenkins_operating_system.equals("MacOS Catalina")){ return macOSCatalina }else if (jenkins_operating_system.equals("macOS Mojave")){ return macOSMojave }else if (jenkins_operating_system.equals("macOS High Sierra")){ return macOSHighSierra }else if (jenkins_operating_system.equals("macOS Sierra")){ return macOSSierra }else if (jenkins_operating_system.equals("OS X El Capitan")){ return OSXElCapitan }else if (jenkins_operating_system.equals("OS X Yosemite")){ return OSXYosemite }else if (jenkins_operating_system.equals("OS X Mavericks")){ return OSXMavericks }</script>
+							<sandbox>false</sandbox>
+						</secureScript>
+						<secureFallbackScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script/>
+							<sandbox>false</sandbox>
+						</secureFallbackScript>
+					</script>
+					<projectName>UI Automation</projectName>
+					<projectFullName>UI Automation</projectFullName>
+					<parameters class="linked-hash-map"/>
+					<referencedParameters>jenkins_operating_system</referencedParameters>
+					<choiceType>PT_SINGLE_SELECT</choiceType>
+					<filterable>false</filterable>
+					<filterLength>1</filterLength>
+				</org.biouno.unochoice.CascadeChoiceParameter>
+				<org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.6.1">
+					<name>jenkins_browser_version</name>
+					<randomName>choice-parameter-140867215171657</randomName>
+					<visibleItemCount>1</visibleItemCount>
+					<script class="org.biouno.unochoice.model.GroovyScript">
+						<secureScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script>List windows10chrome = ['latest','90.0', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List windows10firefox = ['latest','87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List windows10edge= ['latest','89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '18.0', '17.0', '16.0', '15.0'] List windows10ie= ['11.0'] List windows8chrome = ['latest','90.0', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List windows8firefox = ['latest','87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List windows8edge= ['latest','89.0', '88.0', '87.0', '86.0', '85.0', '81.0', '80.0'] List windows8ie= ['10.0'] List windows81chrome = ['latest','90.0', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List windows81firefox = ['latest','87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List windows81edge= ['latest','89.0', '88.0', '87.0', '86.0', '85.0', '81.0', '80.0'] List windows81ie= ['11.0'] List windows7chrome = ['latest','90.0', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List windows7firefox = ['latest', '87.0','86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List windows7edge= ['latest','89.0', '88.0', '87.0', '86.0', '85.0', '81.0', '80.0'] List windows7ie= ['latest','11.0', '10.0', '9.0', '8.0'] List MacOSBigsurchrome= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List MacOSBigsurfirefox= ['latest', '87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0'] List MacOSBigsuredge= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0'] List MacOSBigsursafari= ['14.0'] List MacOSCatalinachrome= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List returnMacOSCatalinafirefox= ['latest', '87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List MacOSCatalinasafari= ['13.0'] List MacOSCatalinaedge= ['latest', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0'] List MacOSCatalinaopera= ['latest', '73.0', '72.0', '71.0', '70.0', '69.0'] List macOSMojavechrome= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List macOSMojavefirefox= ['latest', '87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List macOSMojaveedge= ['latest', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0'] List macOSMojavesafari= ['12.0'] List macOSHighSierrachrome= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List macOSHighSierrafirefox= ['latest', '87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List macOSHighSierraedge= ['latest', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0'] List macOSHighSierrasafari= ['11.0'] List macOSSierrachrome= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List macOSSierrafirefox= ['latest', '87.0', '86.0', '85.0', '84.0', '83.0', '82.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List macOSSierraedge= ['latest', '89.0', '88.0', '87.0', '86.0', '85.0', '84.0', '83.0', '81.0', '80.0'] List macOSSierrasafari= ['10.0'] List OSXElCapitanchrome= ['latest', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List OSXElCapitanfirefox= ['latest', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List returnOSXElCapitanedge= ['latest', '81.0', '80.0'] List OSXYosemitechrome= ['latest', '85.0', '84.0', '83.0', '81.0', '80.0', '79.0', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List OSXYosemitefirefox= ['latest', '78.0', '77.0', '76.0', '75.0', '74.0', '73.0', '72.0', '71.0', '70.0', '69.0', '68.0', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] List OSXYosemiteedge= ['latest', '81.0', '80.0'] List OSXMaverickschrome= ['latest', '67.0', '66.0', '65.0', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0'] List OSXMavericksfirefox= ['latest', '64.0', '63.0', '62.0', '61.0', '60.0', '59.0', '58.0', '57.0', '56.0', '55.0', '54.0', '53.0', '52.0', '51.0', '50.0', '49.0', '48.0', '47.0', '46.0', '45.0', '44.0', '43.0', '42.0', '41.0', '40.0', '39.0', '38.0', '37.0', '36.0', '35.0', '34.0', '33.0', '32.0', '31.0', '30.0', '29.0', '28.0', '27.0', '26.0', '25.0', '24.0', '23.0', '22.0', '21.0', '20.0', '19.0', '18.0', '17.0', '16.0', '15.0', '14.0', '13.0', '12.0', '11.0', '10.0', '9.0', '8.0', '7.0', '6.0', '5.0', '4.0'] if(jenkins_operating_system.equals("Windows 10")){ if (jenkins_browser_name.equals("Chrome")){ return windows10chrome }else if (jenkins_browser_name.equals("Firefox")){ return windows10firefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return windows10edge }else if (jenkins_browser_name.equals("Internet Explorer")){ return windows10ie } }else if(jenkins_operating_system.equals("Windows 8")){ if (jenkins_browser_name.equals("Chrome")){ return windows8chrome }else if (jenkins_browser_name.equals("Firefox")){ return windows8firefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return windows8edge }else if (jenkins_browser_name.equals("Internet Explorer")){ return windows8ie } }else if(jenkins_operating_system.equals("Windows 8.1")){ if (jenkins_browser_name.equals("Chrome")){ return windows81chrome }else if (jenkins_browser_name.equals("Firefox")){ return windows81firefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return windows81edge }else if (jenkins_browser_name.equals("Internet Explorer")){ return windows81ie } }else if(jenkins_operating_system.equals("Windows 7")){ if (jenkins_browser_name.equals("Chrome")){ return windows7chrome }else if (jenkins_browser_name.equals("Firefox")){ return windows7firefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return windows7edge }else if (jenkins_browser_name.equals("Internet Explorer")){ return windows7ie } } else if(jenkins_operating_system.equals("MacOS Big sur")){ if (jenkins_browser_name.equals("Chrome")){ return MacOSBigsurchrome }else if (jenkins_browser_name.equals("Firefox")){ return MacOSBigsurfirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return MacOSBigsuredge }else if (jenkins_browser_name.equals("Safari")){ return MacOSBigsursafari } }else if(jenkins_operating_system.equals("MacOS Catalina")){ if (jenkins_browser_name.equals("Chrome")){ return MacOSCatalinachrome }else if (jenkins_browser_name.equals("Firefox")){ returnMacOSCatalinafirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return MacOSCatalinaedge }else if (jenkins_browser_name.equals("Safari")){ return MacOSCatalinasafari }else if (jenkins_browser_name.equals("Opera")){ return MacOSCatalinaopera } }else if(jenkins_operating_system.equals("macOS Mojave")){ if (jenkins_browser_name.equals("Chrome")){ return macOSMojavechrome }else if (jenkins_browser_name.equals("Firefox")){ return macOSMojavefirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return macOSMojaveedge }else if (jenkins_browser_name.equals("Safari")){ return macOSMojavesafari } }else if(jenkins_operating_system.equals("macOS High Sierra")){ if (jenkins_browser_name.equals("Chrome")){ return macOSHighSierrachrome }else if (jenkins_browser_name.equals("Firefox")){ return macOSHighSierrafirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return macOSHighSierraedge }else if (jenkins_browser_name.equals("Safari")){ return macOSHighSierrasafari } }else if(jenkins_operating_system.equals("macOS Sierra")){ if (jenkins_browser_name.equals("Chrome")){ return macOSSierrachrome }else if (jenkins_browser_name.equals("Firefox")){ return macOSSierrafirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return macOSSierraedge }else if (jenkins_browser_name.equals("Safari")){ return macOSSierrasafari } }else if(jenkins_operating_system.equals("OS X El Capitan")){ if (jenkins_browser_name.equals("Chrome")){ return OSXElCapitanchrome }else if (jenkins_browser_name.equals("Firefox")){ return OSXElCapitanfirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return OSXElCapitanedge } }else if(jenkins_operating_system.equals("OS X Yosemite")){ if (jenkins_browser_name.equals("Chrome")){ return OSXYosemitechrome }else if (jenkins_browser_name.equals("Firefox")){ return OSXYosemitefirefox }else if (jenkins_browser_name.equals("MicrosoftEdge")){ return OSXYosemiteedge } }else if(jenkins_operating_system.equals("OS X Mavericks")){ if (jenkins_browser_name.equals("Chrome")){ return OSXMaverickschrome }else if (jenkins_browser_name.equals("Firefox")){ return OSXMavericksfirefox } }</script>
+							<sandbox>false</sandbox>
+						</secureScript>
+						<secureFallbackScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script/>
+							<sandbox>false</sandbox>
+						</secureFallbackScript>
+					</script>
+					<projectName>UI Automation</projectName>
+					<projectFullName>UI Automation</projectFullName>
+					<parameters class="linked-hash-map"/>
+					<referencedParameters>jenkins_browser_name, jenkins_operating_system</referencedParameters>
+					<choiceType>PT_SINGLE_SELECT</choiceType>
+					<filterable>false</filterable>
+					<filterLength>1</filterLength>
+				</org.biouno.unochoice.CascadeChoiceParameter>
+				<org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.6.1">
+					<name>jenkins_screen_resolution</name>
+					<randomName>choice-parameter-140868246044150</randomName>
+					<visibleItemCount>1</visibleItemCount>
+					<script class="org.biouno.unochoice.model.GroovyScript">
+						<secureScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script>List windows10 = ["1920x1080","1024x768","1280x800","1280x1024","1366x768","1440x900","1680x1050","1600x1200","1920x1200","2048x1536","2560x1440"] List windows81 = ["1920x1080","1024x768","1280x800","1280x1024","1366x768","1440x900","1680x1050","1600x1200","1920x1200","2048x1536"] List windows8 = ["1920x1080","1024x768","1280x800","1280x1024","1366x768","1440x900","1680x1050","1600x1200","1920x1200","2048x1536"] List windows7 = ["1920x1080","1024x768","1280x800","1280x1024","1366x768","1440x900","1680x1050","1600x1200","1920x1200","2048x1536"] List macOSBigsur = ["1920x1080","1024x768","1280x800","1280x960","1280x1024","1366x768","1440x900","1600x1200","2048x1536","2560x1440"] List macOSCatalina = ["1920x1080","1024x768","1280x800","1280x960","1280x1024","1366x768","1440x900","1600x1200","2048x1536","2560x1440"] List macOSMojave = ["1920x1080","1024x768","1280x800","1280x960","1280x1024","1366x768","1440x900","1600x1200","2048x1536","2560x1440"] List macOSHighSierra= ["1920x1080","1024x768","1280x800","1280x960","1280x1024","1366x768","1440x900","1600x1200","2048x1536","2560x1440"] List macOSSierra= ["1920x1080","1024x768","1280x800","1280x960","1280x1024","1366x768","1440x900","1600x1200","2048x1536","2560x1440"] List OSXElCapitan= ["1920x1080","1024x768","1280x960","1280x1024","1600x1200"] List OSXYosemite= ["1920x1080","1024x768","1280x960","1280x1024","1600x1200"] List OSXMavericks= ["1920x1080","1024x768","1280x960","1280x1024","1600x1200"] if(jenkins_operating_system.equals("Windows 10")){ return windows10 }else if (jenkins_operating_system.equals("Windows 8")){ return windows8 }else if (jenkins_operating_system.equals("Windows 8.1")){ return windows81 }else if (jenkins_operating_system.equals("Windows 7")){ return windows7 }else if (jenkins_operating_system.equals("MacOS Big sur")){ return macOSBigsur }else if (jenkins_operating_system.equals("MacOS Catalina")){ return macOSCatalina }else if (jenkins_operating_system.equals("macOS Mojave")){ return macOSMojave }else if (jenkins_operating_system.equals("macOS High Sierra")){ return macOSHighSierra }else if (jenkins_operating_system.equals("macOS Sierra")){ return macOSSierra }else if (jenkins_operating_system.equals("OS X El Capitan")){ return OSXElCapitan }else if (jenkins_operating_system.equals("OS X Yosemite")){ return OSXYosemite }else if (jenkins_operating_system.equals("OS X Mavericks")){ return OSXMavericks } </script>
+							<sandbox>false</sandbox>
+						</secureScript>
+						<secureFallbackScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script/>
+							<sandbox>false</sandbox>
+						</secureFallbackScript>
+					</script>
+					<projectName>UI Automation</projectName>
+					<projectFullName>UI Automation</projectFullName>
+					<parameters class="linked-hash-map"/>
+					<referencedParameters>jenkins_operating_system</referencedParameters>
+					<choiceType>PT_SINGLE_SELECT</choiceType>
+					<filterable>false</filterable>
+					<filterLength>1</filterLength>
+				</org.biouno.unochoice.CascadeChoiceParameter>
+				<org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.6.1">
+					<name>jenkins_feature_list</name>
+					<randomName>choice-parameter-80785377297051</randomName>
+					<visibleItemCount>1</visibleItemCount>
+					<script class="org.biouno.unochoice.model.GroovyScript">
+						<secureScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script>["auth", "dataaccessapi" , "businesslogicapi" , "database" , "datacatalog" , "digitaltransformer" , "querybuilderapi" , "serviceproviders" , "testsuite" , "filemanager" , "rolebasedaccess" , "onboarding"]</script>
+							<sandbox>true</sandbox>
+						</secureScript>
+						<secureFallbackScript plugin="script-security@1175.v4b_d517d6db_f0">
+							<script/>
+							<sandbox>true</sandbox>
+						</secureFallbackScript>
+					</script>
+					<projectName>UI Automation</projectName>
+					<projectFullName>UI Automation</projectFullName>
+					<choiceType>PT_CHECKBOX</choiceType>
+					<filterable>false</filterable>
+					<filterLength>1</filterLength>
+				</org.biouno.unochoice.ChoiceParameter>
+			</parameterDefinitions>
+		</hudson.model.ParametersDefinitionProperty>
+	</properties>
+	<scm class="hudson.plugins.git.GitSCM" plugin="git@4.11.3">
+		<configVersion>2</configVersion>
+		<userRemoteConfigs>
+			<hudson.plugins.git.UserRemoteConfig>
+				<url>https://github.com/harivignesh0101/automation</url>
+			</hudson.plugins.git.UserRemoteConfig>
+		</userRemoteConfigs>
+		<branches>
+			<hudson.plugins.git.BranchSpec>
+				<name>*/dataaccessAPI-negative-tests-</name>
+			</hudson.plugins.git.BranchSpec>
+		</branches>
+		<doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+		<submoduleCfg class="empty-list"/>
+		<extensions/>
+	</scm>
+	<assignedNode>ec2-fleet</assignedNode>
+	<canRoam>false</canRoam>
+	<disabled>false</disabled>
+	<blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+	<blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+	<triggers/>
+	<concurrentBuild>false</concurrentBuild>
+	<rootModule>
+		<groupId>TestSuite</groupId>
+		<artifactId>TestSuite</artifactId>
+	</rootModule>
+	<goals>clean test -Dsurefire.suiteXmlFiles=testfile.xml</goals>
+	<aggregatorStyleBuild>true</aggregatorStyleBuild>
+	<incrementalBuild>false</incrementalBuild>
+	<ignoreUpstremChanges>false</ignoreUpstremChanges>
+	<ignoreUnsuccessfulUpstreams>false</ignoreUnsuccessfulUpstreams>
+	<archivingDisabled>false</archivingDisabled>
+	<siteArchivingDisabled>false</siteArchivingDisabled>
+	<fingerprintingDisabled>false</fingerprintingDisabled>
+	<resolveDependencies>false</resolveDependencies>
+	<processPlugins>false</processPlugins>
+	<mavenValidationLevel>-1</mavenValidationLevel>
+	<runHeadless>false</runHeadless>
+	<disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+	<blockTriggerWhenBuilding>true</blockTriggerWhenBuilding>
+	<settings class="jenkins.mvn.DefaultSettingsProvider"/>
+	<globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+	<reporters/>
+	<publishers/>
+	<buildWrappers>
+		<com.lambdatest.jenkins.freestyle.MagicPlugBuildWrapper plugin="lambdatest-automation@1.20.0">
+			<seleniumCapabilityRequest>
+				<net.sf.json.JSONObject>
+					<nullObject>false</nullObject>
+					<properties class="org.apache.commons.collections.map.ListOrderedMap" serialization="custom">
+						<unserializable-parents/>
+						<org.apache.commons.collections.map.ListOrderedMap>
+							<default>
+								<insertOrder>
+									<string>operatingSystem</string>
+									<string>browserName</string>
+									<string>browserVersion</string>
+									<string>resolution</string>
+								</insertOrder>
+							</default>
+							<map>
+								<entry>
+									<string>browserVersion</string>
+									<string>101.0</string>
+								</entry>
+								<entry>
+									<string>browserName</string>
+									<string>Chrome</string>
+								</entry>
+								<entry>
+									<string>operatingSystem</string>
+									<string>win11</string>
+								</entry>
+								<entry>
+									<string>resolution</string>
+									<string>1920x1080</string>
+								</entry>
+							</map>
+						</org.apache.commons.collections.map.ListOrderedMap>
+					</properties>
+				</net.sf.json.JSONObject>
+			</seleniumCapabilityRequest>
+			<credentialsId>95e34084-215b-467e-b527-fa54da81af53</credentialsId>
+			<username>harivignesh</username>
+			<choice>prod</choice>
+			<useLocalTunnel>false</useLocalTunnel>
+			<sharedTunnel>false</sharedTunnel>
+			<websocketTunnel>false</websocketTunnel>
+			<userAuthResponse>
+				<id>408326</id>
+				<name>Harivignesh</name>
+				<username>harivignesh</username>
+				<email>harivignesh0101@gmail.com</email>
+				<status>Active</status>
+				<organizationRole>Admin</organizationRole>
+			</userAuthResponse>
+			<useWorkspacePath>false</useWorkspacePath>
+		</com.lambdatest.jenkins.freestyle.MagicPlugBuildWrapper>
+	</buildWrappers>
+	<prebuilders>
+		<hudson.tasks.Shell>
+			<command>rm -r -f ExtentReport rm -r -f FailedTestsScreenshots rm -r -f build.properties</command>
+			<configuredLocalRules/>
+		</hudson.tasks.Shell>
+		<hudson.tasks.Shell>
+			<command>if [ -z "$jenkins_operating_system" ] then echo "" else echo "operating_system=$jenkins_operating_system" >> build.properties fi if [ -z "$jenkins_screen_resolution" ] then echo "" else echo "system_resolution=$jenkins_screen_resolution" >> build.properties fi if [ -z "$jenkins_browser_name" ] then echo "" else echo "browser_name=$jenkins_browser_name" >> build.properties fi if [ -z "$jenkins_browser_version" ] then echo "" else echo "browser_version=$jenkins_browser_version" >> build.properties fi if [ -z "$jenkins_feature_list" ] then echo "\$var2 is empty" else echo "feature_list=$jenkins_feature_list" >> build.properties fi</command>
+			<configuredLocalRules/>
+		</hudson.tasks.Shell>
+		<EnvInjectBuilder plugin="envinject@2.866.v5c0403e3d4df">
+			<info>
+				<propertiesFilePath>build.properties</propertiesFilePath>
+			</info>
+		</EnvInjectBuilder>
+		<hudson.tasks.Shell>
+			<command>javac -cp .:XMLConstruction/json-simple-1.1.jar XMLConstruction/CreateXMLDOM.java java -cp XMLConstruction/:XMLConstruction/json-simple-1.1.jar CreateXMLDOM</command>
+			<configuredLocalRules/>
+		</hudson.tasks.Shell>
+		<org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@3.10.0">
+			<managedFiles>
+				<org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+					<fileId>15972b19-2f8a-4eef-ab4d-21f733dc7ebf</fileId>
+					<targetLocation>pom.xml</targetLocation>
+					<replaceTokens>false</replaceTokens>
+				</org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+			</managedFiles>
+		</org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep>
+		<org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@3.10.0">
+			<managedFiles>
+				<org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+					<fileId>eb1d59fc-a769-42fc-8ccf-067949f052bd</fileId>
+					<targetLocation>src/main/resources/config/data.properties</targetLocation>
+					<replaceTokens>false</replaceTokens>
+				</org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+			</managedFiles>
+		</org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep>
+		<org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@3.10.0">
+			<managedFiles>
+				<org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+					<fileId>df9304ca-0c0f-48c3-968f-55a507f9b65c</fileId>
+					<targetLocation>src/main/resources/config/remotedriver.properties</targetLocation>
+					<replaceTokens>false</replaceTokens>
+				</org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+			</managedFiles>
+		</org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep>
+		<org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@3.10.0">
+			<managedFiles>
+				<org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+					<fileId>58c76cf3-38a5-4e9f-a65d-61fe4de4e875</fileId>
+					<targetLocation>src/main/resources/config/hariApis.properties</targetLocation>
+					<replaceTokens>false</replaceTokens>
+				</org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
+			</managedFiles>
+		</org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep>
+	</prebuilders>
+	<postbuilders/>
+	<runPostStepsIfResult>
+		<name>FAILURE</name>
+		<ordinal>2</ordinal>
+		<color>RED</color>
+		<completeBuild>true</completeBuild>
+	</runPostStepsIfResult>
+</maven2-moduleset>
